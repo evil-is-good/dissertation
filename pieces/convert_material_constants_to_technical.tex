@@ -1,0 +1,123 @@
+%%% Поля и разметка страницы %%%
+\documentclass[a4paper,12pt]{article}
+\usepackage{lscape}		% Для включения альбомных страниц
+
+%%% Кодировки и шрифты %%%
+\usepackage{cmap}						% Улучшенный поиск русских слов в полученном pdf-файле
+\usepackage[T2A]{fontenc}				% Поддержка русских букв
+\usepackage[utf8]{inputenc}				% Кодировка utf8
+\usepackage[english, russian]{babel}	% Языки: русский, английский
+%\usepackage{pscyr}						% Красивые русские шрифты
+
+%%% Математические пакеты %%%
+\usepackage{amsthm,amsfonts,amsmath,amssymb,amscd} % Математические дополнения от AMS
+
+%%% Оформление абзацев %%%
+\usepackage{indentfirst} % Красная строка
+
+%%% Цвета %%%
+\usepackage[usenames]{color}
+\usepackage{color}
+\usepackage{colortbl}
+
+%%% Таблицы %%%
+\usepackage{longtable}					% Длинные таблицы
+\usepackage{multirow,makecell,array}	% Улучшенное форматирование таблиц
+
+%%% Общее форматирование
+\usepackage[singlelinecheck=off,center]{caption}	% Многострочные подписи
+\usepackage{soul}									% Поддержка переносоустойчивых подчёркиваний и зачёркиваний
+
+%%% Библиография %%%
+\usepackage{cite} % Красивые ссылки на литературу
+
+%%% Гиперссылки %%%
+\usepackage[plainpages=false,pdfpagelabels=false]{hyperref}
+\definecolor{linkcolor}{rgb}{0.9,0,0}
+\definecolor{citecolor}{rgb}{0,0.6,0}
+\definecolor{urlcolor}{rgb}{0,0,1}
+\hypersetup{
+    colorlinks, linkcolor={linkcolor},
+    citecolor={citecolor}, urlcolor={urlcolor}
+}
+
+%%% Изображения %%%
+\usepackage{graphicx}		% Подключаем пакет работы с графикой
+\graphicspath{{images/}}	% Пути к изображениям
+
+%%% Выравнивание и переносы %%%
+\sloppy					% Избавляемся от переполнений
+\clubpenalty=10000		% Запрещаем разрыв страницы после первой строки абзаца
+\widowpenalty=10000		% Запрещаем разрыв страницы после последней строки абзаца
+
+%%% Библиография %%%
+\makeatletter
+\bibliographystyle{utf8gost705u}	% Оформляем библиографию в соответствии с ГОСТ 7.0.5
+\renewcommand{\@biblabel}[1]{#1.}	% Заменяем библиографию с квадратных скобок на точку:
+\makeatother
+
+%%% Колонтитулы %%%
+\let\Sectionmark\sectionmark
+\def\sectionmark#1{\def\Sectionname{#1}\Sectionmark{#1}}
+\makeatletter
+\newcommand*{\currentname}{\@currentlabelname}
+\renewcommand{\@oddhead}{\it \vbox{\hbox to \textwidth%
+    % {\hfil Фамилия И.О. --- Короткое название черновика\hfil\strut}\hbox to \textwidth%
+    {\today \hfil \thesection~\Sectionname\strut}\hrule}}
+\makeatother
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+
+{~}\bigskip
+\begin{center}
+    \Huge{Конвертирование материальных констант $C_{ijkl}$ в технические: $E$, $\nu$ и пр.}
+\end{center}
+
+\section{Описание}
+В обобщённом виде, для анизотропного матенриала, закон Гука имееет вид:
+\begin{equation}
+    \label{eq1}
+    \sigma_{ij} = C_{ijkl}\varepsilon_{kl}
+\end{equation}
+Тензор $C_{ijkl}$ - тензор упругости составленный из материальных констант, всего их 81.
+В силу симметрии тензоров $\varepsilon_{ij}$ и $\sigma_{ij}$:
+$$
+C_{ijkl} = C_{jikl} = C_{ijlk} = C_{jilk} 
+$$
+Количество независимых констант сокращается до 36. Далее из условия потенциальности тензора напряженияй:
+$$
+W=\frac{1}{2}C_{ijkl}\varepsilon_{ij}\varepsilon_{kl}
+$$
+Следует что 
+$$
+C_{ijkl} = C_{klij}
+$$
+Значит что всего независимых констант 21.
+
+Обратное соотношение имеет вид:
+$$
+\varepsilon_{ij} = D_{ijkl}\sigma_{kl}
+$$
+Где $D$ - тензор податливости.
+
+Записав тензоры $\varepsilon_{ij}$ и $\sigma_{ij}$ как вектора $\varepsilon_{\alpha}$ и $\sigma_{\alpha}$, где $\alpha \in \{xx, yy, zz, xy, xz, yz\}$,
+представим соотношение \ref{eq1} в виде:
+$$
+    \sigma_{\alpha} = C_{\alpha\beta}\varepsilon_{\beta}
+$$
+А обратное:
+$$
+    \varepsilon_{\alpha} = D_{\alpha\beta}\sigma_{\beta}
+$$
+Последнее, в более традиционной форме, записанное через технические константы, представляет собой такую систему:
+\begin{equation*}
+    \begin{cases}
+        \varepsilon{xx} = \frac{1}{E_x}\sigma_{xx} - \frac{\nu_{yx}}{E_y}\sigma_{yy} - \frac{\nu_{zx}}{E_z}\sigma_{zz} + \frac{\varkappa^1_{xyx}}{2G_{xy}}\sigma_{xy} + \frac{\varkappa^1_{xzx}}{2G_{xz}}\sigma_{xz} + \frac{\varkappa^1_{yzx}}{2G_{yz}}\sigma_{yz}\\
+        \varepsilon{yy} = \frac{1}{E_x}\sigma_{xx} - \frac{\nu_{yx}}{E_y}\sigma_{yy} - \frac{\nu_{zx}}{E_z}\sigma_{zz} + \frac{\varkappa^1_{xyx}}{2G_{xy}}\sigma_{xy} + \frac{\varkappa^1_{xzx}}{2G_{xz}}\sigma_{xz} + \frac{\varkappa^1_{yzx}}{2G_{yz}}\sigma_{yz}\\
+        \varepsilon{xx} = \frac{1}{E_x}\sigma_{xx} - \frac{\nu_{yx}}{E_y}\sigma_{yy} - \frac{\nu_{zx}}{E_z}\sigma_{zz} + \frac{\varkappa^1_{xyx}}{2G_{xy}}\sigma_{xy} + \frac{\varkappa^1_{xzx}}{2G_{xz}}\sigma_{xz} + \frac{\varkappa^1_{yzx}}{2G_{yz}}\sigma_{yz}\\
+        123
+    \end{cases}
+\end{equation*}
+
+\end{document}
