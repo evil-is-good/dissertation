@@ -110,14 +110,34 @@ $$
 $$
     \varepsilon_{\alpha} = D_{\alpha\beta}\sigma_{\beta}
 $$
+$$
+D_{\alpha\beta} = C^{-1}_{\alpha\beta}
+$$
 Последнее, в более традиционной форме, записанное через технические константы, представляет собой такую систему:
 \begin{equation*}
     \begin{cases}
-        \varepsilon{xx} = \frac{1}{E_x}\sigma_{xx} - \frac{\nu_{yx}}{E_y}\sigma_{yy} - \frac{\nu_{zx}}{E_z}\sigma_{zz} + \frac{\varkappa^1_{xyx}}{2G_{xy}}\sigma_{xy} + \frac{\varkappa^1_{xzx}}{2G_{xz}}\sigma_{xz} + \frac{\varkappa^1_{yzx}}{2G_{yz}}\sigma_{yz}\\
-        \varepsilon{yy} = \frac{1}{E_x}\sigma_{xx} - \frac{\nu_{yx}}{E_y}\sigma_{yy} - \frac{\nu_{zx}}{E_z}\sigma_{zz} + \frac{\varkappa^1_{xyx}}{2G_{xy}}\sigma_{xy} + \frac{\varkappa^1_{xzx}}{2G_{xz}}\sigma_{xz} + \frac{\varkappa^1_{yzx}}{2G_{yz}}\sigma_{yz}\\
-        \varepsilon{xx} = \frac{1}{E_x}\sigma_{xx} - \frac{\nu_{yx}}{E_y}\sigma_{yy} - \frac{\nu_{zx}}{E_z}\sigma_{zz} + \frac{\varkappa^1_{xyx}}{2G_{xy}}\sigma_{xy} + \frac{\varkappa^1_{xzx}}{2G_{xz}}\sigma_{xz} + \frac{\varkappa^1_{yzx}}{2G_{yz}}\sigma_{yz}\\
-        123
+        \varepsilon_{xx} = \frac{1}{E_x}\sigma_{xx} - \frac{\nu_{yx}}{E_y}\sigma_{yy} - \frac{\nu_{zx}}{E_z}\sigma_{zz} + \frac{\varkappa^1_{xyx}}{2G_{xy}}\sigma_{xy} + \frac{\varkappa^1_{xzx}}{2G_{xz}}\sigma_{xz} + \frac{\varkappa^1_{yzx}}{2G_{yz}}\sigma_{yz}\\
+        \varepsilon_{yy} = - \frac{\nu_{xy}}{E_x}\sigma_{xx} + \frac{1}{E_y}\sigma_{yy} - \frac{\nu_{zy}}{E_z}\sigma_{zz} + \frac{\varkappa^1_{xyy}}{2G_{xy}}\sigma_{xy} + \frac{\varkappa^1_{xzy}}{2G_{xz}}\sigma_{xz} + \frac{\varkappa^1_{yzy}}{2G_{yz}}\sigma_{yz}\\
+        \varepsilon_{xx} = - \frac{\nu_{xz}}{E_x}\sigma_{xx} - \frac{\nu_{yz}}{E_y}\sigma_{yy} + \frac{1}{E_z}\sigma_{zz} + \frac{\varkappa^1_{xyx}}{2G_{xz}}\sigma_{xy} + \frac{\varkappa^1_{xzz}}{2G_{xz}}\sigma_{xz} + \frac{\varkappa^1_{yzz}}{2G_{yz}}\sigma_{yz}\\
+        \varepsilon_{xy} = \frac{\varkappa^2_{xxy}}{E_x}\sigma_{xx} + \frac{\varkappa^2_{yxy}}{E_y}\sigma_{yy} + \frac{\varkappa^2_{zxy}}{E_z}\sigma_{zz} + \frac{1}{2G_{xy}}\sigma_{xy} + \frac{\eta_{xzxy}}{2G_{xz}}\sigma_{xz} + \frac{\eta_{yzxy}}{2G_{yz}}\sigma_{yz}\\
+        \varepsilon_{xz} = \frac{\varkappa^2_{xxz}}{E_x}\sigma_{xx} + \frac{\varkappa^2_{yxz}}{E_y}\sigma_{yy} + \frac{\varkappa^2_{zxz}}{E_z}\sigma_{zz} + \frac{\eta_{xyxz}}{2G_{xy}}\sigma_{xy} + \frac{1}{2G_{xz}}\sigma_{xz} + \frac{\eta_{yzxz}}{2G_{yz}}\sigma_{yz}\\
+        \varepsilon_{xz} = \frac{\varkappa^2_{xyz}}{E_x}\sigma_{xx} + \frac{\varkappa^2_{yyz}}{E_y}\sigma_{yy} + \frac{\varkappa^2_{zyz}}{E_z}\sigma_{zz} + \frac{\eta_{xyyz}}{2G_{xy}}\sigma_{xy} + \frac{\eta_{xzyz}}{2G_{xz}}\sigma_{xz} + \frac{1}{2G_{yz}}\sigma_{yz}
     \end{cases}
 \end{equation*}
+Здесь:
+
+$E_i$ - модули Юнга, модули нормальной упругости определяющие величину линейной деформации в направлении $i$ (то есть деформации $\varepsilon_{ii}$) при действии одних только нормальных напряжений в этом же направлении (то есть напряжений $\sigma_{ii}$);
+
+$\nu_{ij}$ - коэффициенты Пуассона, определяющие величину линейной деформации в направлении $j$ (то есть деформации $\sigma_{jj}$) при действии одних только нормальных напряжений в направлении $i$ (то есть напряжений $\sigma_{ii}$);
+
+$G_{ij}$ - модули сдвига для плоскостей определяющие величину сдвиговой деформации в плоскости $ij$ (то есть деформации $\varepsilon_{ij}$ ) при действии одних только касательных напряжений в этой же плоскости (то есть напряжений $\sigma_{ij}$);
+
+$\varkappa^1_{kli}$ - коэффициенты взаимного влияния, определяющие величину линейной деформации в направлении $i$ (то есть деформации $\varepsilon_{ii}$) при действии одних только касательных напряжений в плоскости $kl$ (то есть напряжений $\sigma_{kl}$);
+
+$\varkappa^2_{ikl}$ - коэффициенты взаимного влияния, определяющие величину сдвиговой деформации в плоскости $kl$ (то есть деформации $\varepsilon_{kl}$) при действии одних только нормальных напряжений в направлении $i$ (то есть напряжений $\sigma_{ii}$);
+
+Таким образом для того чтобы из тензора упругости $C_{\alpha\beta}$ получить технические константы необходимо получить обратную матрицуш $D_{\alpha\beta}$ и из неё уже извлечь эти константы.
+
+$\eta_{ijkl}$ - коэффициенты Ченцова, определяющие величину сдвиговой деформации в плоскости $kl$ (то есть деформации $\varepsilon_{kl}$) при действии одних только касательных напряжений в плоскости $ij$ (то есть напряжений $\sigma_{ij}$);
 
 \end{document}
